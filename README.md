@@ -3,7 +3,7 @@
 <p>This is a simple and classic Tic Tac Toe game developed for Android. The game is designed to be user-friendly, featuring a clean and intuitive interface. It provides a two-player mode where users can take turns playing against each other on the same device.
 </p>
   <h2>ScreenShot</h2>
- <p>![TTT.jpg](https://github.com/Danishyousuf19/Tik-Tak-Toe/blob/main/TTT.jpg?raw=true)</p> 
+ <img src="https://github.com/Danishyousuf19/Tik-Tak-Toe/blob/main/TTT.jpg" alt="screenshot" height="400"width="200">
 <h2>Features</h2>
   
 <b>Two-Player Mode</b>: Play against a friend on the same device, taking turns to make your moves.
