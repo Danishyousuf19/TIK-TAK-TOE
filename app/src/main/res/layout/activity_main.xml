@@ -14,7 +14,7 @@
         android:fontFamily="serif-monospace"
         android:shadowColor="#8B3CFA"
         android:text="@string/head"
-        android:textColor="#4962FD"
+        android:textColor="#3048DA"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
