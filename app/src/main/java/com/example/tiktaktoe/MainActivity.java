@@ -10,13 +10,14 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     boolean gameActive = true;
     int moves=0;
-
+    TextView status;
     int scorex=0;
     int scoreo=0;
 //    player meaning
     //0-->x
     //1-->o
-    int activePlayer=0;
+    int activePlayer=2;
+
 //    state meaning
     //0-->x
     //1-->o
@@ -34,15 +35,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 public void playerTap(View view){
 
+char[]xo={'X','O'};
 ImageView img=(ImageView)view;
 int tapped=Integer.parseInt(img.getTag().toString());
 if(!gameActive){
     gameReset(view);
     moves=0;
 }
-if(activeState[tapped]==2&&gameActive){
+
+if(activeState[tapped]==2&&gameActive&&activePlayer!=2){
     update_moves();
     activeState[tapped]=activePlayer;
     img.setTranslationY(-1000f);
@@ -50,13 +54,13 @@ if(activeState[tapped]==2&&gameActive){
         activePlayer=1;
         img.setImageResource(R.drawable.x);
         TextView status = findViewById(R.id.status);
-        status.setText("O's Turn - Tap to play");
+        status.setText(xo[activePlayer]+"'s Turn - Tap to play");
     }
     else{
         activePlayer=0;
         img.setImageResource(R.drawable.o);
-        TextView status = findViewById(R.id.status);
-        status.setText("X's Turn - Tap to play");
+        status = findViewById(R.id.status);
+        status.setText(xo[activePlayer]+"'s Turn - Tap to play");
     }
 
 img.animate().translationYBy(1000f).setDuration(300);}
@@ -70,10 +74,12 @@ img.animate().translationYBy(1000f).setDuration(300);}
              gameActive=false;
              if(activeState[winposition[0]]==0){
                  winner="X Won";
+
                  scorex+=1;
              }
              else if(activeState[winposition[0]]==1){
                  winner="O Won";
+
                  scoreo+=1;
              }
 //             update winner
@@ -103,6 +109,7 @@ img.animate().translationYBy(1000f).setDuration(300);}
         winnerStr = "Draw";
         TextView status = findViewById(R.id.status);
         status.setText(winnerStr);
+
     }
 }
 
@@ -124,6 +131,21 @@ public void gameReset(View view){
     TextView status = findViewById(R.id.status);
     status.setText("X's Turn - Tap to play");
 }
+    public void Choose_o(View v){
+        TextView tv=findViewById(R.id.who_is_first);
+
+        if(moves==0||!gameActive){
+            if(activePlayer==2){
+                activePlayer=0;
+            }
+            if(activePlayer==0){
+                activePlayer=1;
+                tv.setText("Player : O");
+            }
+            else {activePlayer=0;
+                tv.setText("Player : X");}
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
